@@ -4,7 +4,7 @@ python:
 install:
   - pip install -r requirements.txt
 script:
-  - pytest -s --cov=rasp_obd test_app.py
+  - pytest -s --cov-report term --cov app test_app.py
 env:
   - CODECOV_TOKEN="0623a9ab-ec3b-4c9c-9860-dd6fb9851865"
 after_success:
