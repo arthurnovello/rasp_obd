@@ -1,4 +1,9 @@
 import obd
 
-connection = obd.OBD()
-print(connection.status())
+
+def connect():
+    connection = obd.OBD()
+    return connection.status()
+
+
+connect()
