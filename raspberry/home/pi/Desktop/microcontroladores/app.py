@@ -5,10 +5,14 @@ from time import sleep
 
 while True:
     # Confere se tem alguem nas posicoes motorista, carona e passageiro
+    print("ok while")
     motorista = dist(4, 17)
-    carona = dist(27, 22)
-    passageiro = dist(5, 6)
-    if motorista < 30 or carona < 30 or passageiro < 30:
+    print(motorista)
+    # carona = dist(27, 22)
+    # passageiro = dist(5, 6)
+    if motorista < 30:
+        print("ok if")
+        # if motorista < 30 or carona < 30 or passageiro < 30:
         if temp("TEMP") <= 27 and temp("TEMP") >= 10:
             buz("OFF")
             # Mostra tela de tudo ok
