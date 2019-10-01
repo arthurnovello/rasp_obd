@@ -6,6 +6,9 @@ diretorioAtual = os.path.dirname(os.path.abspath(__file__))
 
 class Gui:
     def __init__(self):
+        self.temp = 0
+        self.pessoas = 0
+        self.fumaca = False
         self.window = tk.Tk()
         self.window.title("Dog Mode")
         self.window.resizable(0,0)
@@ -30,7 +33,3 @@ class Gui:
             self.lblSmoke.configure(text="Fumaça detectada!", foreground="red")
         else:
             self.lblSmoke.configure(text="Fumaça não detectada", foreground="blue")
-
-gui = Gui()
-gui.popularInfos(23,3,False)
-gui.window.mainloop()

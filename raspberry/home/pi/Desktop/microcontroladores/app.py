@@ -1,3 +1,5 @@
+import gui
+import threading
 from sensores import dist, temp
 from buzz import buz
 from time import sleep
@@ -24,3 +26,15 @@ while True:
             buz("ON")
             # Mostra tela de Emergencia
     sleep(1)
+tela = gui.Gui()
+def atualizaGui(tela,temp,pessoas,fumaca):
+    while True:    
+        tela.popularInfos(tela.temp,tela.pessoas,tela.fumaca)
+        tela.temp = temp
+        tela.pessoas = pessoas
+        tela.fumaca = fumaca
+        sleep(1)
+
+thread = threading.Thread(target=atualizaGui,args=(tela,temp,pessoas,fumaca))
+thread.start()
+tela.window.mainloop()        

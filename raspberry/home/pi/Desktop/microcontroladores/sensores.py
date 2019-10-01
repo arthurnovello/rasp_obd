@@ -9,8 +9,8 @@ GPIO.setmode(GPIO.BCM)
 def dist(pinE, pinT):
     GPIO.setmode(GPIO.BCM)
 
-    TRIG = 17
-    ECHO = 4
+    TRIG = pinT
+    ECHO = pinE
 
     print("In progress")
 
@@ -37,9 +37,9 @@ def dist(pinE, pinT):
 
     distance = round(distance, 2)
 
-    print(distance)
-
     GPIO.cleanup()
+
+    return distance
 
 
 def temp(valor):
