@@ -1,40 +1,57 @@
 import gui
 import threading
-from sensores import dist, temp
-from buzz import buz
+# from sensores import dist, temp
+# from buzz import buz
 from time import sleep
 
 
-while True:
-    # Confere se tem alguem nas posicoes motorista, carona e passageiro
-    print("ok while")
-    motorista = dist(4, 17)
-    print(motorista)
+# while True:
+    # numPessoas = 0
+    # motorista = dist(4, 17)
     # carona = dist(27, 22)
     # passageiro = dist(5, 6)
-    if motorista < 30:
-        print("ok if")
-        # if motorista < 30 or carona < 30 or passageiro < 30:
-        if temp("TEMP") <= 27 and temp("TEMP") >= 10:
-            buz("OFF")
-            # Mostra tela de tudo ok
-        elif (temp("TEMP") > 27 or temp("TEMP") < 10) and \
-             (temp("TEMP") <= 37 or temp("TEMP") >= 0):
-            buz("OFF")
-            # Mostra tela de Alerta
-        elif temp("TEMP") > 37 or temp("TEMP") < 0:
-            buz("ON")
-            # Mostra tela de Emergencia
-    sleep(1)
+
+    # if motorista < 30:
+    #     numPessoas += 1
+    # if carona < 30:
+    #     numPessoas += 1
+    # if passageiro < 30:
+    #     numPessoas += 1
+
+    # temperatura = temp("TEMP")
+    # umidade = temp("HUMID")
+    # pessoas = numPessoas 
+    # fumaca = False     #sensor de fumaca -----> Não Instalado
+    
+#PARA TESTES
+temperatura = 30
+umidade = 12
+pessoas = 3
+fumaca = False     #sensor de fumaca -----> Não Instalado
+alerta = True
+
+    # #verificar essas condicoes para disparar o alarme(ACRESCENTAR UMIDADE E PESSOAS)
+    # if temperatura <= 27 and temperatura >= 10:
+    #     buz("OFF")
+    #     alerta = False
+    # elif (temperatura > 27 or temperatura < 10) and (temperatura <= 37 or temperatura >= 0):
+    #     buz("OFF")
+    #     alerta = False
+    # elif temperatura > 37 or temperatura < 0:
+    #     buz("ON")
+    #     alerta = True
+    
 tela = gui.Gui()
-def atualizaGui(tela,temp,pessoas,fumaca):
+def atualizaGui(tela,temperatura,umidade,pessoas,fumaca,alerta):
     while True:    
-        tela.popularInfos(tela.temp,tela.pessoas,tela.fumaca)
-        tela.temp = temp
+        tela.popularInfos(tela.temperatura, tela.umidade, tela.pessoas,tela.fumaca,tela.alerta)
+        tela.temperatura = temperatura
+        tela.umidade = umidade
         tela.pessoas = pessoas
         tela.fumaca = fumaca
+        tela.alerta = alerta
         sleep(1)
 
-thread = threading.Thread(target=atualizaGui,args=(tela,temp,pessoas,fumaca))
+thread = threading.Thread(target=atualizaGui,args=(tela,temperatura,umidade,pessoas,fumaca,alerta))
 thread.start()
 tela.window.mainloop()        
