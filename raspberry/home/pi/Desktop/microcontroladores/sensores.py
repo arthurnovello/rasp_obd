@@ -1,9 +1,6 @@
 import Adafruit_DHT
-import board
-import sys
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BCM)
 
 
 def dist(pinE, pinT):
@@ -43,8 +40,12 @@ def dist(pinE, pinT):
 
 
 def temp(valor):
-    dhtDevice = Adafruit_DHT.DHT11(board.D18)
+    GPIO.setmode(GPIO.BCM)
+    sensor = Adafruit_DHT.DHT11
+    pin = 18
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    GPIO.cleanup()
     if valor == "TEMP":
-        return dhtDevice.temperature
-    elif valor == "HUMID":
-        return dhtDevice.humidity
+        return temperature
+    if valor == "HUMID":
+        return humidity

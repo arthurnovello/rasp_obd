@@ -1,10 +1,15 @@
-from gpiozero import Buzzer
-
-buzzer = Buzzer(15)
-
+import RPi.GPIO as GPIO
+from time import sleep
 
 def buz(cond):
+    GPIO.setmode(GPIO.BCM)
+    buzzer = 23
+    GPIO.setup(buzzer,GPIO.OUT)
+    GPIO.output(buzzer, GPIO.LOW)
     if cond == "ON":
-        buzzer.on()
+        GPIO.output(buzzer, GPIO.HIGH)
+        print("Beep")
     elif cond == "OFF":
-        buzzer.off()
+        GPIO.output(buzzer, GPIO.LOW)
+        print("No Beep")
+        GPIO.cleanup()

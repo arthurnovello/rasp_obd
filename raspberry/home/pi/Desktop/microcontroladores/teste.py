@@ -1,5 +1,10 @@
+import Adafruit_DHT
 import RPi.GPIO as GPIO
 import time
+from sensores import temp, dist
+from buzz import buz
+
+
 GPIO.setmode(GPIO.BCM)
 
 TRIG = 17
@@ -33,3 +38,11 @@ distance = round(distance, 2)
 print(distance)
 
 GPIO.cleanup()
+
+
+print(dist(4, 17))
+buz("ON")
+time.sleep(0.5)
+buz("OFF")
+print(temp("HUMID"))
+print(temp("TEMP"))

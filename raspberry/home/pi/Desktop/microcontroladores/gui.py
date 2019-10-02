@@ -31,7 +31,7 @@ class Gui:
         self.lblSmoke.grid(column=1, row=3, padx=(30))
         self.lblAlert = ttk.Label(self.infos, font=('Arial', 16))
         self.lblAlert.grid(column=1, row=4, padx=(30))
-    
+
     def popularInfos(self, temp, umidade, people, smoke, alert):
         self.lblTemp["text"] = "Temperatura no carro: " + str(temp) + "º"
         self.lblUmid["text"] = "Umidade no carro: " + str(umidade)
@@ -41,6 +41,6 @@ class Gui:
         else:
             self.lblSmoke.configure(text="Fumaça não detectada")
         if alert == True:
-            self.lblSmoke.configure(text="ALERTA!", foreground="red")
-
-            
+            self.lblAlert.configure(text="ALERTA!", foreground="red")
+        else:
+            self.lblAlert.configure(text="")
