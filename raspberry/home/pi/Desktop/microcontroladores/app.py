@@ -2,6 +2,7 @@ import gui
 import threading
 from sensores import dist, temp
 from buzz import buz
+import ubidot
 
 class Main():
     def __init__(self):
@@ -41,7 +42,9 @@ tela = gui.Gui()
 def atualizaGui():
     while True:
         main.atualizaDados()
-        main.disparaAlarme();
+        json = ubidot.build_payload(main.umidade, main.temperatura, main.numPessoas, main.alerta)
+        ubidot.post_request(json)
+        main.disparaAlarme()
         tela.popularInfos(main.temperatura, main.umidade, main.numPessoas, main.fumaca, main.alerta)
 
 thread = threading.Thread(target=atualizaGui)
