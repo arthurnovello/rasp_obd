@@ -18,7 +18,8 @@
     - Sensor de temperatura;
     - Sensor de distancia;
     - Buzzer;
+    - Ubidots.
 
 ### Funcionamento
 
- O *Sensor de presença* irá controlar a existencia de alguem no veiculo, depois disso o *Sensor de Temperatura e Humidade* fazem as medições para uma temperatura maior que 37ºC ou menor que 0ºC, ou uma umidade menor que 0, caso essa condições sejam atendidas, o sistema ira alertar com auxilio do buzzer.
+ O *Sensor de presença* irá controlar a existencia de alguem no veiculo, depois disso o *Sensor de Temperatura e Humidade* fazem as medições para uma temperatura maior que 37ºC ou menor que 0ºC, ou uma umidade menor que 0, caso essa condições sejam atendidas, o sistema ira alertar com auxilio do buzzer. Após isso, as informações serão enviadas para o Ubidots, que apresenta em um Dashboard.
